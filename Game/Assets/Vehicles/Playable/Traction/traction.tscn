@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://hqbgclj7m46o"]
+[gd_scene load_steps=8 format=3 uid="uid://uhijhtp0w7js"]
 
-[ext_resource type="Script" uid="uid://bcaecjnq3fl8a" path="res://Game/Assets/Vehicles/Playable/Car/car.gd" id="1_dnn4g"]
-[ext_resource type="Texture2D" uid="uid://ba3xg0lo47c87" path="res://Game/Assets/Vehicles/Playable/Car/car.png" id="1_eww5f"]
-[ext_resource type="PackedScene" uid="uid://dk0r60fvired1" path="res://Game/Assets/MiniMap/mini_map.tscn" id="2_txe26"]
-[ext_resource type="PackedScene" uid="uid://2jb7kcappv42" path="res://Game/Assets/Wheel/wheel.tscn" id="3_2iwa8"]
-[ext_resource type="PackedScene" uid="uid://dgbskivy1jls7" path="res://Game/Assets/Wheel/TireGauge/tire_gauge.tscn" id="3_u2pbm"]
+[ext_resource type="Script" uid="uid://bcaecjnq3fl8a" path="res://Game/Assets/Vehicles/Playable/Car/car.gd" id="1_gshf4"]
+[ext_resource type="PackedScene" uid="uid://dk0r60fvired1" path="res://Game/Assets/MiniMap/mini_map.tscn" id="2_fhs8l"]
+[ext_resource type="PackedScene" uid="uid://dgbskivy1jls7" path="res://Game/Assets/Wheel/TireGauge/tire_gauge.tscn" id="3_yqobe"]
+[ext_resource type="PackedScene" uid="uid://2jb7kcappv42" path="res://Game/Assets/Wheel/wheel.tscn" id="4_gaja7"]
+[ext_resource type="Texture2D" uid="uid://ba3xg0lo47c87" path="res://Game/Assets/Vehicles/Playable/Car/car.png" id="5_rqu6i"]
 
 [sub_resource type="Curve" id="Curve_txe26"]
 _limits = [0.0, 800.0, 0.0, 170.0]
@@ -16,10 +16,10 @@ size = Vector2(180, 320)
 
 [node name="Car" type="RigidBody2D" node_paths=PackedStringArray("direction_wheels", "power_wheels", "speed_label")]
 z_index = 5
-script = ExtResource("1_dnn4g")
+script = ExtResource("1_gshf4")
 turning_radius = 25.0
 direction_wheels = [NodePath("WheelFL"), NodePath("WheelFR")]
-power_wheels = [NodePath("WheelBL"), NodePath("WheelBR")]
+power_wheels = [NodePath("WheelFL"), NodePath("WheelFR")]
 speed_label = NodePath("Camera2D/CanvasLayer/Speed")
 power_curve = SubResource("Curve_txe26")
 
@@ -45,7 +45,7 @@ handle_input_locally = false
 size = Vector2i(673, 1200)
 render_target_update_mode = 4
 
-[node name="MiniMap" parent="Camera2D/CanvasLayer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("car") instance=ExtResource("2_txe26")]
+[node name="MiniMap" parent="Camera2D/CanvasLayer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("car") instance=ExtResource("2_fhs8l")]
 position = Vector2(342, 600)
 car = NodePath("../../../../..")
 
@@ -58,16 +58,16 @@ offset_right = 1.0
 grow_vertical = 0
 columns = 2
 
-[node name="TireGauge" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_u2pbm")]
+[node name="TireGauge" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_yqobe")]
 layout_mode = 2
 
-[node name="TireGauge2" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_u2pbm")]
+[node name="TireGauge2" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_yqobe")]
 layout_mode = 2
 
-[node name="TireGauge3" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_u2pbm")]
+[node name="TireGauge3" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_yqobe")]
 layout_mode = 2
 
-[node name="TireGauge4" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_u2pbm")]
+[node name="TireGauge4" parent="Camera2D/CanvasLayer/Tires" instance=ExtResource("3_yqobe")]
 layout_mode = 2
 
 [node name="Speed" type="Label" parent="Camera2D/CanvasLayer"]
@@ -82,21 +82,21 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Speed"
 
-[node name="WheelFL" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("3_2iwa8")]
+[node name="WheelFL" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("4_gaja7")]
 position = Vector2(-90, -100)
 gauge = NodePath("../Camera2D/CanvasLayer/Tires/TireGauge")
 stress_limit = 800
 
-[node name="WheelFR" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("3_2iwa8")]
+[node name="WheelFR" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("4_gaja7")]
 position = Vector2(90, -100)
 gauge = NodePath("../Camera2D/CanvasLayer/Tires/TireGauge2")
 stress_limit = 800
 
-[node name="WheelBL" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("3_2iwa8")]
+[node name="WheelBL" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("4_gaja7")]
 position = Vector2(-90, 100)
 gauge = NodePath("../Camera2D/CanvasLayer/Tires/TireGauge3")
 
-[node name="WheelBR" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("3_2iwa8")]
+[node name="WheelBR" parent="." node_paths=PackedStringArray("gauge") instance=ExtResource("4_gaja7")]
 position = Vector2(90, 100)
 gauge = NodePath("../Camera2D/CanvasLayer/Tires/TireGauge4")
 
@@ -104,6 +104,6 @@ gauge = NodePath("../Camera2D/CanvasLayer/Tires/TireGauge4")
 shape = SubResource("RectangleShape2D_dnn4g")
 
 [node name="Car" type="Sprite2D" parent="Body"]
-texture = ExtResource("1_eww5f")
+texture = ExtResource("5_rqu6i")
 
 [node name="CenterOfMass" type="Node2D" parent="."]

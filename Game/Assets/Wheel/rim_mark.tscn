@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bcadbdksaqyml"]
+
+[node name="TireMark" type="Line2D"]
+width = 22.0
+default_color = Color(0.637843, 0.637843, 0.637843, 1)
+joint_mode = 2
+end_cap_mode = 1

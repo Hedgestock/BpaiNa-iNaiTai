@@ -1,45 +1,98 @@
 class_name Wheel extends Node2D
 
-@export var debug_display: Label
-@export var durability: float = 100
+@export var gauge: TireGauge
 @export var stress_limit: int = 400
-@export var physics: Physics
+@export var new_physics: Physics
+@export var rim_physics: Physics
 
-var is_drifting = false
-var tire_mark: Line2D 
+var _durability: float
+var durability: float:
+	get:
+		return _durability
+	set(value):
+		if _durability >= 0 && value < 0:
+			explode()
+		_durability = value
+		gauge.value = value
 
-#func _ready():
-	#get_tree().root.get_node("Game").add_child.call_deferred(tire_mark)
+var physics: Physics
+
+var is_drifting: bool = false
+var is_burning_out: bool = false
+var has_grip: bool:
+	get: return !is_drifting && !is_burning_out
+var tire_mark: Line2D
+
+func _ready() -> void:
+	renew()
 	
-func drive(power: int, reverse: bool = false) -> Vector2:
+func _physics_process(delta):
+	if !has_grip:
+		tire_mark.add_point(global_position)
+		durability -= 0.05 * physics.durability_mod
+
+func drive(velocity: Vector2, power: int, reverse: bool = false) -> Vector2:
 	var tire_force: Vector2
+	var current_grip: float = physics.grip.sample(abs(power)/(velocity.length()*2))
+	print(str("%s %s %s %s %s" % [name, abs(power), velocity.length(), abs(power)/(velocity.length()), current_grip]))
 	if reverse:
-		tire_force = Vector2.DOWN.rotated(global_rotation) * power
+		tire_force = Vector2.DOWN.rotated(global_rotation) * power * current_grip
 	else:
-		tire_force = Vector2.UP.rotated(global_rotation) * power
+		tire_force = Vector2.UP.rotated(global_rotation) * power * current_grip
+	if current_grip > .8:
+		stop_burning_out()
+	else:
+		start_burning_out()
 	return tire_force
 
 func brake(velocity: Vector2):
 	var stress: float = velocity.dot(Vector2.UP.rotated(global_rotation))
-	return stress * 2 * Vector2.DOWN.rotated(global_rotation)
+	durability -= abs(stress) * 0.0005 * physics.durability_mod
+	return stress * Vector2.DOWN.rotated(global_rotation)
 
 func drag(velocity: Vector2) -> Vector2:
 	var stress: float = velocity.dot(Vector2.RIGHT.rotated(global_rotation))
-	debug_display.text = name + " stress: " + str(stress) + " durability: " + str(durability)
 	var current_grip: float = physics.grip.sample(abs(stress)/stress_limit)
 	if current_grip > .8:
-		is_drifting = false
+		stop_drifting()
 	else:
 		start_drifting()
-		tire_mark.add_point(global_position)
+	durability -= abs(stress) * 0.0001 * physics.durability_mod
 	return stress * current_grip * Vector2.LEFT.rotated(global_rotation)
 
-func start_drifting():
+func start_drifting() -> void:
 	if is_drifting: return
+	add_tire_mark()
 	is_drifting = true
-	tire_mark = load("res://Game/Assets/Wheel/tire_mark.tscn").instantiate()
-	get_tree().root.get_node("Game").add_child.call_deferred(tire_mark)
 
-func stop_drifting():
+func stop_drifting() -> void:
 	if !is_drifting: return
 	is_drifting = false
+
+func start_burning_out() -> void:
+	if is_burning_out: return
+	add_tire_mark()
+	is_burning_out = true
+
+func stop_burning_out() -> void:
+	if !is_burning_out: return
+	is_burning_out = false
+
+func add_tire_mark() -> void:
+	if !has_grip: return
+	tire_mark = physics.drift_mark.instantiate()
+	get_tree().root.get_node("Game").add_child.call_deferred(tire_mark)
+
+func renew() -> void:
+	gauge.max_value = new_physics.durability
+	apply_physics(new_physics)
+
+func explode() -> void:
+	apply_physics(rim_physics)
+
+func apply_physics(physics: Physics) -> void:
+	stop_drifting()
+	stop_burning_out()
+	self.physics = physics
+	durability = physics.durability
+	get_node("Tire").texture = physics.texture

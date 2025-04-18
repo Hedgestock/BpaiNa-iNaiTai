@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Physics" load_steps=5 format=3 uid="uid://b1eu6xky1ydkb"]
+
+[ext_resource type="PackedScene" uid="uid://bcadbdksaqyml" path="res://Game/Assets/Wheel/rim_mark.tscn" id="1_nm0q0"]
+[ext_resource type="Script" uid="uid://t33wp67185fb" path="res://Game/Assets/Wheel/physics.gd" id="2_nm0q0"]
+[ext_resource type="Texture2D" uid="uid://dvvwojoiysuei" path="res://Game/Assets/Wheel/rim.png" id="3_nm0q0"]
+
+[sub_resource type="Curve" id="Curve_484go"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.1, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(0.95, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[resource]
+script = ExtResource("2_nm0q0")
+grip = SubResource("Curve_484go")
+drift_mark = ExtResource("1_nm0q0")
+durability = 0
+durability_mod = 0.0
+texture = ExtResource("3_nm0q0")
+metadata/_custom_type_script = "uid://t33wp67185fb"

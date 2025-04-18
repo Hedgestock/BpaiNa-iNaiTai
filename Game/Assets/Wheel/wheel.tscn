@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://2jb7kcappv42"]
 
 [ext_resource type="Script" uid="uid://lk1ohx1vnr3" path="res://Game/Assets/Wheel/wheel.gd" id="1_pq07j"]
-[ext_resource type="Texture2D" uid="uid://gvf8aeci8g2d" path="res://Game/Assets/Wheel/tire.png" id="2_htdwp"]
 [ext_resource type="Resource" uid="uid://bowj7xe4hy83s" path="res://Game/Assets/Wheel/physics_normal.tres" id="2_nomxb"]
+[ext_resource type="Resource" uid="uid://b1eu6xky1ydkb" path="res://Game/Assets/Wheel/physics_rim_only.tres" id="3_nomxb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xfjfy"]
 radius = 12.0
@@ -11,9 +11,9 @@ height = 60.0
 [node name="Wheel" type="CollisionShape2D"]
 shape = SubResource("CapsuleShape2D_xfjfy")
 script = ExtResource("1_pq07j")
-physics = ExtResource("2_nomxb")
+new_physics = ExtResource("2_nomxb")
+rim_physics = ExtResource("3_nomxb")
 
 [node name="Tire" type="Sprite2D" parent="."]
 show_behind_parent = true
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_htdwp")

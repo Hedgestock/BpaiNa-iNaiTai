@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgbskivy1jls7"]
+
+[ext_resource type="Texture2D" uid="uid://dvvwojoiysuei" path="res://Game/Assets/Wheel/rim.png" id="1_321cr"]
+[ext_resource type="Texture2D" uid="uid://gvf8aeci8g2d" path="res://Game/Assets/Wheel/tire.png" id="2_feclg"]
+[ext_resource type="Script" uid="uid://cb5ik7ib0v73w" path="res://Game/Assets/Wheel/TireGauge/tire_gauge.gd" id="3_5t0mm"]
+
+[node name="TireGauge" type="TextureProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("1_321cr")
+texture_progress = ExtResource("2_feclg")
+script = ExtResource("3_5t0mm")
