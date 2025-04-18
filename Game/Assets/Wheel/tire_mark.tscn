@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://gkhael8m351v"]
+
+[node name="TireMark" type="Line2D"]
+width = 24.0
+default_color = Color(0.2, 0.2, 0.2, 1)
+joint_mode = 2
+end_cap_mode = 1

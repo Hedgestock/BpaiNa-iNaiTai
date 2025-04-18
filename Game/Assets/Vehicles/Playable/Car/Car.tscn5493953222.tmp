@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://hqbgclj7m46o"]
+
+[ext_resource type="Script" uid="uid://bcaecjnq3fl8a" path="res://Game/Assets/Vehicles/Playable/Car/car.gd" id="1_dnn4g"]
+[ext_resource type="Texture2D" uid="uid://ba3xg0lo47c87" path="res://Game/Assets/Vehicles/Playable/Car/Car.png" id="1_eww5f"]
+[ext_resource type="PackedScene" uid="uid://2jb7kcappv42" path="res://Game/Assets/Vehicles/Playable/Car/Wheel.tscn" id="3_2iwa8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnn4g"]
+size = Vector2(180, 320)
+
+[node name="Car" type="RigidBody2D" node_paths=PackedStringArray("power_wheels")]
+script = ExtResource("1_dnn4g")
+power_wheels = [NodePath("WheelBL"), NodePath("WheelBR")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+enabled = false
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+texture = ExtResource("1_eww5f")
+
+[node name="RayCast2DWheelFL" type="RayCast2D" parent="."]
+position = Vector2(-90, -100)
+
+[node name="WheelFL" parent="." instance=ExtResource("3_2iwa8")]
+position = Vector2(-90, -100)
+
+[node name="RayCast2DWheelFR" type="RayCast2D" parent="."]
+position = Vector2(90, -100)
+
+[node name="WheelFR" parent="." instance=ExtResource("3_2iwa8")]
+position = Vector2(90, -100)
+
+[node name="RayCast2DWheelBL" type="RayCast2D" parent="."]
+position = Vector2(-90, 100)
+
+[node name="WheelBL" parent="." instance=ExtResource("3_2iwa8")]
+position = Vector2(-90, 100)
+
+[node name="RayCast2DWheelBR" type="RayCast2D" parent="."]
+position = Vector2(90, 100)
+
+[node name="WheelBR" parent="." instance=ExtResource("3_2iwa8")]
+position = Vector2(90, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dnn4g")
