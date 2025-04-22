@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c240ygb5cmf1x"]
+
+[ext_resource type="Texture2D" uid="uid://c5h4djc5i86t8" path="res://Game/Assets/Vehicles/Playable/Car/FuelGauge/FuelTank.png" id="1_sryxu"]
+[ext_resource type="Texture2D" uid="uid://baoqe871j71q8" path="res://Game/Assets/Vehicles/Playable/Car/FuelGauge/Fuel.png" id="2_ugnt4"]
+
+[node name="FuelGauge" type="TextureProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("1_sryxu")
+texture_progress = ExtResource("2_ugnt4")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhpdyskc5r85a"
-path="res://.godot/imported/thailand.png-6f6180708b362338b47b1aadc220535f.ctex"
+uid="uid://baoqe871j71q8"
+path="res://.godot/imported/Fuel.png-f0f5d901d43bdb6581f86e96d4b19b86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Scenes/thailand.png"
-dest_files=["res://.godot/imported/thailand.png-6f6180708b362338b47b1aadc220535f.ctex"]
+source_file="res://Game/Assets/Vehicles/Playable/Car/FuelGauge/Fuel.png"
+dest_files=["res://.godot/imported/Fuel.png-f0f5d901d43bdb6581f86e96d4b19b86.ctex"]
 
 [params]
 

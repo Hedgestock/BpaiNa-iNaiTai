@@ -1,7 +1,11 @@
-[gd_scene format=3 uid="uid://bcadbdksaqyml"]
+[gd_scene load_steps=2 format=3 uid="uid://bcadbdksaqyml"]
+
+[ext_resource type="Texture2D" uid="uid://b8larc11jiy0r" path="res://Game/Assets/Wheel/rim_mark.png" id="1_14iaa"]
 
 [node name="TireMark" type="Line2D"]
-width = 22.0
-default_color = Color(0.637843, 0.637843, 0.637843, 1)
+texture_repeat = 2
+width = 24.0
+texture = ExtResource("1_14iaa")
+texture_mode = 1
 joint_mode = 2
 end_cap_mode = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqlcl3iguvly7"]
 
 [ext_resource type="Script" uid="uid://bcaecjnq3fl8a" path="res://Game/Assets/Vehicles/Playable/Car/car.gd" id="1_532it"]
-[ext_resource type="PackedScene" uid="uid://dk0r60fvired1" path="res://Game/Assets/MiniMap/mini_map.tscn" id="2_p77ju"]
+[ext_resource type="PackedScene" uid="uid://dk0r60fvired1" path="res://Game/UI/MiniMap/mini_map.tscn" id="2_p77ju"]
 [ext_resource type="PackedScene" uid="uid://dgbskivy1jls7" path="res://Game/Assets/Wheel/TireGauge/tire_gauge.tscn" id="3_k0p1x"]
 [ext_resource type="PackedScene" uid="uid://2jb7kcappv42" path="res://Game/Assets/Wheel/wheel.tscn" id="4_4svnr"]
 [ext_resource type="Texture2D" uid="uid://ba3xg0lo47c87" path="res://Game/Assets/Vehicles/Playable/Car/car.png" id="5_bw2ow"]
@@ -17,7 +17,6 @@ size = Vector2(180, 320)
 [node name="Car" type="RigidBody2D" node_paths=PackedStringArray("direction_wheels", "power_wheels", "speed_label")]
 z_index = 5
 script = ExtResource("1_532it")
-turning_radius = 25.0
 direction_wheels = [NodePath("WheelFL"), NodePath("WheelFR")]
 power_wheels = [NodePath("WheelBL"), NodePath("WheelBR"), NodePath("WheelFL"), NodePath("WheelFR")]
 speed_label = NodePath("Camera2D/CanvasLayer/Speed")

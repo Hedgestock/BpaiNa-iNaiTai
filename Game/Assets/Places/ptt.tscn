@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0uhpdvcr67xb"]
+
+[ext_resource type="Script" uid="uid://r6mrcqwb4mxd" path="res://Game/Assets/Places/gas_station.gd" id="1_3scxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0sqx"]
+size = Vector2(1000, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jltnx"]
+size = Vector2(250, 250)
+
+[node name="PTT" type="Node2D"]
+script = ExtResource("1_3scxm")
+
+[node name="RefuelZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RefuelZone"]
+shape = SubResource("RectangleShape2D_r0sqx")
+
+[node name="TireChangeZone" type="Area2D" parent="."]
+position = Vector2(0, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TireChangeZone"]
+shape = SubResource("RectangleShape2D_jltnx")
+
+[connection signal="body_entered" from="RefuelZone" to="." method="start_refueling"]
+[connection signal="body_exited" from="RefuelZone" to="." method="stop_refueling"]
