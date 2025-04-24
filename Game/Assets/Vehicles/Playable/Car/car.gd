@@ -3,7 +3,7 @@ class_name Car extends RigidBody2D
 @export var camera: Camera2D
 @export var mini_map: SubViewportContainer
 @export var turning_radius: float = 25
-@export var fuel_consuption: float = 0.1
+@export var fuel_consuption: float = 0.02
 @export var fuel_gauge: TextureProgressBar
 @export var direction_wheels: Array[Wheel]
 @export var power_wheels: Array[Wheel]

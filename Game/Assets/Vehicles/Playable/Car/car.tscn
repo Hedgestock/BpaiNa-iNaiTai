@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://hqbgclj7m46o"]
+[gd_scene load_steps=7 format=3 uid="uid://hqbgclj7m46o"]
 
 [ext_resource type="Script" uid="uid://bcaecjnq3fl8a" path="res://Game/Assets/Vehicles/Playable/Car/car.gd" id="1_dnn4g"]
 [ext_resource type="Texture2D" uid="uid://ba3xg0lo47c87" path="res://Game/Assets/Vehicles/Playable/Car/car.png" id="1_eww5f"]
-[ext_resource type="PackedScene" uid="uid://dk0r60fvired1" path="res://Game/UI/MiniMap/mini_map.tscn" id="2_txe26"]
+[ext_resource type="PackedScene" uid="uid://c7cif78b5iynq" path="res://Game/Assets/Vehicles/Playable/Car/car_camera.tscn" id="2_txe26"]
 [ext_resource type="PackedScene" uid="uid://2jb7kcappv42" path="res://Game/Assets/Wheel/wheel.tscn" id="3_2iwa8"]
-[ext_resource type="PackedScene" uid="uid://c240ygb5cmf1x" path="res://Game/Assets/Vehicles/Playable/Car/FuelGauge/fuel_gauge.tscn" id="3_nwghr"]
-[ext_resource type="PackedScene" uid="uid://dgbskivy1jls7" path="res://Game/Assets/Wheel/TireGauge/tire_gauge.tscn" id="3_u2pbm"]
 
 [sub_resource type="Curve" id="Curve_txe26"]
 _limits = [0.0, 800.0, 0.0, 170.0]
@@ -26,68 +24,11 @@ power_wheels = [NodePath("WheelBL"), NodePath("WheelBR")]
 speed_label = NodePath("Camera2D/CanvasLayer/Speed")
 power_curve = SubResource("Curve_txe26")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" parent="." instance=ExtResource("2_txe26")]
 position = Vector2(0, -500)
-ignore_rotation = false
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="Minimap" type="SubViewportContainer" parent="Camera2D/CanvasLayer"]
-offset_right = 673.0
-offset_bottom = 1200.0
-size_flags_horizontal = 8
-
-[node name="SubViewport" type="SubViewport" parent="Camera2D/CanvasLayer/Minimap"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(673, 1200)
-render_target_update_mode = 4
-
-[node name="MiniMap" parent="Camera2D/CanvasLayer/Minimap/SubViewport" node_paths=PackedStringArray("car") instance=ExtResource("2_txe26")]
-position = Vector2(342, 600)
+[node name="MiniMap" parent="Camera2D/CanvasLayer/Minimap/SubViewport" index="0" node_paths=PackedStringArray("car")]
 car = NodePath("../../../../..")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -368.0
-offset_right = 120.0
-grow_vertical = 0
-
-[node name="FuelGauge" parent="Camera2D/CanvasLayer/VBoxContainer" instance=ExtResource("3_nwghr")]
-layout_mode = 2
-
-[node name="Tires" type="GridContainer" parent="Camera2D/CanvasLayer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-columns = 2
-
-[node name="TireGauge" parent="Camera2D/CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_u2pbm")]
-layout_mode = 2
-
-[node name="TireGauge2" parent="Camera2D/CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_u2pbm")]
-layout_mode = 2
-
-[node name="TireGauge3" parent="Camera2D/CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_u2pbm")]
-layout_mode = 2
-
-[node name="TireGauge4" parent="Camera2D/CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_u2pbm")]
-layout_mode = 2
-
-[node name="Speed" type="Label" parent="Camera2D/CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -189.0
-offset_top = -88.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Speed"
 
 [node name="WheelFL" parent="." node_paths=PackedStringArray("durability") instance=ExtResource("3_2iwa8")]
 position = Vector2(-90, -100)
@@ -114,3 +55,5 @@ shape = SubResource("RectangleShape2D_dnn4g")
 texture = ExtResource("1_eww5f")
 
 [node name="CenterOfMass" type="Node2D" parent="."]
+
+[editable path="Camera2D"]

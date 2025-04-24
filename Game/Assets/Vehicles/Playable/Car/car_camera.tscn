@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7cif78b5iynq"]
+
+[ext_resource type="PackedScene" uid="uid://dk0r60fvired1" path="res://Game/UI/MiniMap/mini_map.tscn" id="1_xse01"]
+[ext_resource type="PackedScene" uid="uid://c240ygb5cmf1x" path="res://Game/Assets/Vehicles/Playable/Car/FuelGauge/fuel_gauge.tscn" id="2_3nunc"]
+[ext_resource type="PackedScene" uid="uid://dgbskivy1jls7" path="res://Game/Assets/Wheel/TireGauge/tire_gauge.tscn" id="3_n58ln"]
+
+[node name="Camera2D" type="Camera2D"]
+ignore_rotation = false
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Minimap" type="SubViewportContainer" parent="CanvasLayer"]
+offset_right = 673.0
+offset_bottom = 1200.0
+size_flags_horizontal = 8
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Minimap"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(673, 1200)
+render_target_update_mode = 4
+
+[node name="MiniMap" parent="CanvasLayer/Minimap/SubViewport" node_paths=PackedStringArray("car") instance=ExtResource("1_xse01")]
+position = Vector2(342, 600)
+car = NodePath("")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -368.0
+offset_right = 120.0
+grow_vertical = 0
+
+[node name="FuelGauge" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_3nunc")]
+layout_mode = 2
+
+[node name="Tires" type="GridContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+columns = 2
+
+[node name="TireGauge" parent="CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_n58ln")]
+layout_mode = 2
+
+[node name="TireGauge2" parent="CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_n58ln")]
+layout_mode = 2
+
+[node name="TireGauge3" parent="CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_n58ln")]
+layout_mode = 2
+
+[node name="TireGauge4" parent="CanvasLayer/VBoxContainer/Tires" instance=ExtResource("3_n58ln")]
+layout_mode = 2
+
+[node name="Speed" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Speed"

@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://b8ybvw2d3h3qh"]
+[gd_scene load_steps=5 format=3 uid="uid://b8ybvw2d3h3qh"]
+
+[ext_resource type="PackedScene" uid="uid://bgf8ovekkdg2k" path="res://Game/UI/CarButton/car_button.tscn" id="1_bq4aq"]
+[ext_resource type="PackedScene" uid="uid://cqlcl3iguvly7" path="res://Game/Assets/Vehicles/Playable/4x4/4x4.tscn" id="2_7co3c"]
+[ext_resource type="PackedScene" uid="uid://uhijhtp0w7js" path="res://Game/Assets/Vehicles/Playable/Traction/traction.tscn" id="3_iibln"]
+[ext_resource type="PackedScene" uid="uid://hqbgclj7m46o" path="res://Game/Assets/Vehicles/Playable/Car/car.tscn" id="4_ufnwo"]
 
 [node name="Menu" type="CanvasLayer"]
 
@@ -11,3 +16,18 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CarButton" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_bq4aq")]
+layout_mode = 2
+car = ExtResource("2_7co3c")
+
+[node name="CarButton2" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_bq4aq")]
+layout_mode = 2
+car = ExtResource("3_iibln")
+
+[node name="CarButton3" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_bq4aq")]
+layout_mode = 2
+car = ExtResource("4_ufnwo")

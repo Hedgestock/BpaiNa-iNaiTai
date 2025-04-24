@@ -19,3 +19,4 @@ zoom = Vector2(0.1, 0.1)
 
 [node name="PTT" parent="." instance=ExtResource("3_7xb1a")]
 position = Vector2(778, -1640)
+rate = 1

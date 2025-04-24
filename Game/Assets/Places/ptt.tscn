@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://r6mrcqwb4mxd" path="res://Game/Assets/Places/gas_station.gd" id="1_3scxm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0sqx"]
-size = Vector2(1000, 500)
+size = Vector2(1000, 600)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jltnx"]
 size = Vector2(250, 250)
 
-[node name="PTT" type="Node2D"]
+[node name="PTT" type="Node2D" node_paths=PackedStringArray("tire_timer")]
 script = ExtResource("1_3scxm")
+tire_timer = NodePath("Timer")
 
 [node name="RefuelZone" type="Area2D" parent="."]
 
@@ -22,5 +23,11 @@ position = Vector2(0, 1000)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TireChangeZone"]
 shape = SubResource("RectangleShape2D_jltnx")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="RefuelZone" to="." method="start_refueling"]
 [connection signal="body_exited" from="RefuelZone" to="." method="stop_refueling"]
+[connection signal="body_entered" from="TireChangeZone" to="." method="check_for_tire"]
+[connection signal="body_exited" from="TireChangeZone" to="." method="stop_checking_for_tire"]
