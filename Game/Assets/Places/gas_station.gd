@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var rate: int = 1
+@export var rate: int = 0.2
 @export var tire_timer: Timer
 
 func start_refueling(body: Node2D) -> void:
