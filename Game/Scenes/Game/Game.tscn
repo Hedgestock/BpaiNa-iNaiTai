@@ -1,21 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1xihyhg1jpua"]
+[gd_scene load_steps=7 format=3 uid="uid://b1xihyhg1jpua"]
 
 [ext_resource type="Script" uid="uid://gqc8ap41aasi" path="res://Game/Scenes/Game/game.gd" id="1_7xb1a"]
 [ext_resource type="AudioStream" uid="uid://cf046sbq2vdup" path="res://Game/Audio/Highway Hustle.wav" id="2_ueg0k"]
 [ext_resource type="PackedScene" uid="uid://b0uhpdvcr67xb" path="res://Game/Assets/Places/GasStation/ptt.tscn" id="3_7xb1a"]
-[ext_resource type="Texture2D" uid="uid://bhpdyskc5r85a" path="res://Game/Scenes/Game/thailand.png" id="3_pbnrs"]
+[ext_resource type="Texture2D" uid="uid://eej8yyb01xgy" path="res://Game/Assets/Terrains/MAP.svg" id="3_p6c18"]
 [ext_resource type="PackedScene" uid="uid://djwkyb8wxl3ej" path="res://Game/Assets/Terrains/Road/road.tscn" id="4_x1rdj"]
+[ext_resource type="PackedScene" uid="uid://16bauj7l3cvv" path="res://Game/Assets/Terrains/City/city.tscn" id="6_p6c18"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7xb1a")
 main_soundtrack = ExtResource("2_ueg0k")
 
-[node name="Thailand" type="Sprite2D" parent="."]
-scale = Vector2(1000, 1000)
-texture = ExtResource("3_pbnrs")
+[node name="Thailand2" type="Sprite2D" parent="."]
+scale = Vector2(50, 75)
+texture = ExtResource("3_p6c18")
 
-[node name="PTT" parent="." instance=ExtResource("3_7xb1a")]
-position = Vector2(-64527, -50111)
+[node name="Road9" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-251776, 409476)
+points = PackedVector2Array(-10054, 636, -9670, -11652, -3654, -27140, 27775.6, -39424.4, 72831.6, -79616.4, 62719.6, -97408.4, 49210, -137860, 59263.6, -162432, 60543.6, -201088, 71423.6, -226432, 85759.6, -257792, 105472, -299520, 115200, -324608, 112512, -351616, 112128, -370688, 120192, -393856, 120448, -419328, 120576, -432896, 136192, -448512, 155904, -457216, 177408, -461056, 185767, -461806)
+
+[node name="Road10" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-160768, -85755.6)
+points = PackedVector2Array(895.625, 639.625, 10239.6, 23807.6, 39423.6, 34303.6, 55679.6, 33535.6, 73471.6, 29183.6, 94847.6, 31103.6)
+
+[node name="Road5" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-225586, -465810)
+points = PackedVector2Array(1792, 2816, 22313, 91699, 115353, 214172, 84938, 311927, 163697, 364326, 161069, 410761)
+
+[node name="Road6" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-40712.8, 9376.94)
+points = PackedVector2Array(-7296.19, 1664.06, -2432.19, -2943.94, -3584.19, -10751.9, 511.813, -21375.9, -1408.19, -29311.9, 1663.81, -38655.9, -1536.19, -45695.9, -12160.2, -54911.9, -17764.2, -58696.9)
+
+[node name="Road7" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(101339, -280790)
+points = PackedVector2Array(-383.57, 2815.94, -5759.57, 66687.9, -29567.6, 107136, -55551.6, 150272, -110336, 158848, -125056, 166272, -148992, 187776, -160256, 219136, -161318, 225799)
+
+[node name="Road8" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-125824, 49156.4)
+points = PackedVector2Array(-384.391, -768.367, -0.390625, -27904.4, -1536.39, -70016.4, 19071.6, -87296.4, 59775.6, -99072.4)
 
 [node name="Road4" parent="." instance=ExtResource("4_x1rdj")]
 position = Vector2(-66552, -47987)
@@ -32,3 +54,42 @@ points = PackedVector2Array(4333, -1018, -3183, -1021)
 [node name="Road" parent="." instance=ExtResource("4_x1rdj")]
 position = Vector2(-62789, -49111)
 points = PackedVector2Array(4333, -1018, 4333, -5853.79, -3032.74, -5853.79, -3032.74, 183.849, 4333, 183.849, 4333, -1018)
+
+[node name="PTT" parent="." instance=ExtResource("3_7xb1a")]
+position = Vector2(-64527, -50111)
+
+[node name="Kanchanaburi" parent="." instance=ExtResource("6_p6c18")]
+position = Vector2(-160190, -85841)
+scale = Vector2(2, 2)
+city_name = "กาญจนบุรี
+Kanchanaburi"
+
+[node name="Chiang Mai" parent="." instance=ExtResource("6_p6c18")]
+position = Vector2(-223989, -463800)
+scale = Vector2(2, 2)
+city_name = "เชียงใหม่
+Chiang Mai"
+
+[node name="KhonKaen" parent="." instance=ExtResource("6_p6c18")]
+position = Vector2(101051, -278786)
+scale = Vector2(2, 2)
+city_name = "ขอนแก่น
+Khon Kaen"
+
+[node name="Pattaya" parent="." instance=ExtResource("6_p6c18")]
+position = Vector2(-48457, 11393)
+scale = Vector2(2, 2)
+city_name = "พัทยา
+Pattaya"
+
+[node name="HuaHin" parent="." instance=ExtResource("6_p6c18")]
+position = Vector2(-126180, 49215)
+scale = Vector2(2, 2)
+city_name = "หัวหิน
+Hua Hin"
+
+[node name="Phuket" parent="." instance=ExtResource("6_p6c18")]
+position = Vector2(-261832, 410935)
+scale = Vector2(2, 2)
+city_name = "ภูเก็ต
+Phuket"

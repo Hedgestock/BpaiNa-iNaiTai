@@ -3,7 +3,7 @@ class_name Car extends RigidBody2D
 @export var camera: Camera2D
 @export var mini_map: SubViewportContainer
 @export var turning_radius: float = 25
-@export var fuel_consuption: float = 0.02
+@export var fuel_consuption: float = 0.1
 @export var fuel_gauge: TextureProgressBar
 @export var direction_wheels: Array[Wheel]
 @export var power_wheels: Array[Wheel]
@@ -58,7 +58,7 @@ func drive(reverse: bool = false) -> void:
 	power_curve.sample(proxy_speed)
 	
 	for wheel in power_wheels:
-		apply_force(wheel.drive(get_velocity_at_position(wheel.global_position), power_curve.sample(proxy_speed))/power_wheels.size(), wheel.global_position - global_position)
+		apply_force(wheel.drive(get_velocity_at_position(wheel.global_position), power_curve.sample(proxy_speed), reverse)/power_wheels.size(), wheel.global_position - global_position)
 
 
 func get_velocity_at_position(offset: Vector2) -> Vector2:
