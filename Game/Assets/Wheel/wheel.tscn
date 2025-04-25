@@ -8,12 +8,15 @@
 radius = 12.0
 height = 60.0
 
-[node name="Wheel" type="CollisionShape2D"]
+[node name="Wheel" type="CollisionShape2D" node_paths=PackedStringArray("tire_screech")]
 shape = SubResource("CapsuleShape2D_xfjfy")
 script = ExtResource("1_pq07j")
 new_physics = ExtResource("2_nomxb")
 rim_physics = ExtResource("3_nomxb")
+tire_screech = NodePath("AudioStreamPlayer2D")
 
 [node name="Tire" type="Sprite2D" parent="."]
 show_behind_parent = true
 scale = Vector2(0.5, 0.5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

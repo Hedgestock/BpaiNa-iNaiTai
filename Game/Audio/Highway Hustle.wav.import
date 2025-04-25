@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cf046sbq2vdup"
+path="res://.godot/imported/Highway Hustle.wav-f6ecf28fb3129e8691ce055b61df7363.sample"
+
+[deps]
+
+source_file="res://Game/Audio/Highway Hustle.wav"
+dest_files=["res://.godot/imported/Highway Hustle.wav-f6ecf28fb3129e8691ce055b61df7363.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

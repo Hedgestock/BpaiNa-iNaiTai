@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djwkyb8wxl3ej"]
+
+[ext_resource type="Texture2D" uid="uid://tn3a1by4yj7d" path="res://Game/Assets/Terrains/Road/Road.png" id="1_dgw72"]
+[ext_resource type="Script" uid="uid://ycdse4qhu2fc" path="res://Game/Assets/Terrains/Road/road.gd" id="2_d833a"]
+
+[node name="Road" type="Line2D"]
+texture_repeat = 2
+width = 600.0
+texture = ExtResource("1_dgw72")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("2_d833a")

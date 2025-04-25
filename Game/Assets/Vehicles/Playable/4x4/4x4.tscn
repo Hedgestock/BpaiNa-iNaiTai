@@ -51,7 +51,7 @@ durability = NodePath("../Camera2D/CanvasLayer/VBoxContainer/Tires/TireGauge4")
 shape = SubResource("RectangleShape2D_dnn4g")
 
 [node name="Car" type="Sprite2D" parent="Body"]
-modulate = Color(1, 1, 0, 1)
+modulate = Color(0.0608159, 0.211632, 0, 1)
 texture = ExtResource("5_bw2ow")
 
 [node name="CenterOfMass" type="Node2D" parent="."]

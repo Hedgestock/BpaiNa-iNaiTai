@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8ybvw2d3h3qh"]
+[gd_scene load_steps=9 format=3 uid="uid://b8ybvw2d3h3qh"]
 
 [ext_resource type="PackedScene" uid="uid://bgf8ovekkdg2k" path="res://Game/UI/CarButton/car_button.tscn" id="1_bq4aq"]
 [ext_resource type="PackedScene" uid="uid://cqlcl3iguvly7" path="res://Game/Assets/Vehicles/Playable/4x4/4x4.tscn" id="2_7co3c"]
 [ext_resource type="PackedScene" uid="uid://uhijhtp0w7js" path="res://Game/Assets/Vehicles/Playable/Traction/traction.tscn" id="3_iibln"]
 [ext_resource type="PackedScene" uid="uid://hqbgclj7m46o" path="res://Game/Assets/Vehicles/Playable/Car/car.tscn" id="4_ufnwo"]
 [ext_resource type="Script" uid="uid://cue0lvf44l0is" path="res://Game/Scenes/splash_screen.gd" id="5_ufnwo"]
+[ext_resource type="AudioStream" uid="uid://dwwaxm67trjk" path="res://Game/Audio/Choose Your Racer.wav" id="6_bi7qd"]
 [ext_resource type="Texture2D" uid="uid://bkwhancs5j6o5" path="res://WaffleStock/Logo_anime_last_frame.png" id="6_yoai5"]
 [ext_resource type="VideoStream" uid="uid://desns6vcfplb0" path="res://WaffleStock/wafflestock animé.ogv" id="7_bi7qd"]
 
@@ -19,25 +20,45 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "ไปไหนในไทย
+เกมที่สร้างโดยฝรั่ง(เศส)"
+horizontal_alignment = 1
 
 [node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 alignment = 1
 
-[node name="CarButton" parent="MarginContainer/VBoxContainer/HFlowContainer" instance=ExtResource("1_bq4aq")]
-layout_mode = 2
-car = ExtResource("2_7co3c")
-
-[node name="CarButton2" parent="MarginContainer/VBoxContainer/HFlowContainer" instance=ExtResource("1_bq4aq")]
-layout_mode = 2
-car = ExtResource("3_iibln")
-
-[node name="CarButton3" parent="MarginContainer/VBoxContainer/HFlowContainer" instance=ExtResource("1_bq4aq")]
+[node name="Prop" parent="MarginContainer/VBoxContainer/HFlowContainer" instance=ExtResource("1_bq4aq")]
 layout_mode = 2
 car = ExtResource("4_ufnwo")
 
+[node name="Label" parent="MarginContainer/VBoxContainer/HFlowContainer/Prop" index="1"]
+text = "Propulsion"
+
+[node name="4x4" parent="MarginContainer/VBoxContainer/HFlowContainer" instance=ExtResource("1_bq4aq")]
+layout_mode = 2
+car = ExtResource("2_7co3c")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HFlowContainer/4x4" index="1"]
+text = "4x4"
+
+[node name="Trac" parent="MarginContainer/VBoxContainer/HFlowContainer" instance=ExtResource("1_bq4aq")]
+layout_mode = 2
+car = ExtResource("3_iibln")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HFlowContainer/Trac" index="1"]
+text = "Traction"
+
 [node name="ColorRect" type="ColorRect" parent="." node_paths=PackedStringArray("waffle_stock", "logo", "last_frame")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,6 +69,7 @@ script = ExtResource("5_ufnwo")
 waffle_stock = NodePath("WaffleStock")
 logo = NodePath("AspectRatioContainer/CenterContainer/Logo")
 last_frame = NodePath("AspectRatioContainer/LastFrame")
+character_select_soundtrack = ExtResource("6_bi7qd")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="ColorRect"]
 layout_mode = 1
@@ -85,3 +107,7 @@ offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "WaffleStock"
+
+[editable path="MarginContainer/VBoxContainer/HFlowContainer/Prop"]
+[editable path="MarginContainer/VBoxContainer/HFlowContainer/4x4"]
+[editable path="MarginContainer/VBoxContainer/HFlowContainer/Trac"]

@@ -10,6 +10,7 @@ func _ready() -> void:
 	instance.get_node("Camera2D").enabled = false
 	instance.get_node("Camera2D/CanvasLayer").hide()
 	viewer.add_child(instance)
+	grab_focus()
 
 func start_game() -> void:
 	GameManager.selected_car = car

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Physics" load_steps=5 format=3 uid="uid://b1eu6xky1ydkb"]
+[gd_resource type="Resource" script_class="Physics" load_steps=6 format=3 uid="uid://b1eu6xky1ydkb"]
 
 [ext_resource type="PackedScene" uid="uid://bcadbdksaqyml" path="res://Game/Assets/Wheel/rim_mark.tscn" id="1_nm0q0"]
+[ext_resource type="AudioStream" uid="uid://bvksbxm8dfyce" path="res://Game/Audio/tires_squal_loop.wav" id="2_cbdgw"]
 [ext_resource type="Script" uid="uid://t33wp67185fb" path="res://Game/Assets/Wheel/physics.gd" id="2_nm0q0"]
 [ext_resource type="Texture2D" uid="uid://dvvwojoiysuei" path="res://Game/Assets/Wheel/rim.png" id="3_nm0q0"]
 
@@ -15,4 +16,5 @@ drift_mark = ExtResource("1_nm0q0")
 durability = 100
 durability_mod = 0.0
 texture = ExtResource("3_nm0q0")
+screeching = ExtResource("2_cbdgw")
 metadata/_custom_type_script = "uid://t33wp67185fb"

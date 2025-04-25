@@ -3,7 +3,7 @@ extends ColorRect
 @export var waffle_stock: Label
 @export var logo: VideoStreamPlayer
 @export var last_frame: TextureRect
-
+@export var character_select_soundtrack: AudioStream
 
 func _ready():
 	visible = true
@@ -17,4 +17,4 @@ func _ready():
 	tween.tween_property(waffle_stock, "modulate", Color("ffffff"), 1)
 	tween.tween_property(self, "modulate", Color("ffffff"), 1)
 	tween.tween_property(self, "modulate", Color("ffffff00"), 1)
-	tween.tween_callback(func(): queue_free()) #music.play())
+	tween.tween_callback(func(): queue_free(); AudioManager.change_music_to(character_select_soundtrack))

@@ -1,15 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1xihyhg1jpua"]
+[gd_scene load_steps=6 format=3 uid="uid://b1xihyhg1jpua"]
 
 [ext_resource type="Script" uid="uid://gqc8ap41aasi" path="res://Game/Scenes/Game/game.gd" id="1_7xb1a"]
+[ext_resource type="AudioStream" uid="uid://cf046sbq2vdup" path="res://Game/Audio/Highway Hustle.wav" id="2_ueg0k"]
 [ext_resource type="PackedScene" uid="uid://b0uhpdvcr67xb" path="res://Game/Assets/Places/GasStation/ptt.tscn" id="3_7xb1a"]
 [ext_resource type="Texture2D" uid="uid://bhpdyskc5r85a" path="res://Game/Scenes/Game/thailand.png" id="3_pbnrs"]
+[ext_resource type="PackedScene" uid="uid://djwkyb8wxl3ej" path="res://Game/Assets/Terrains/Road/road.tscn" id="4_x1rdj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7xb1a")
+main_soundtrack = ExtResource("2_ueg0k")
 
 [node name="Thailand" type="Sprite2D" parent="."]
 scale = Vector2(1000, 1000)
 texture = ExtResource("3_pbnrs")
 
 [node name="PTT" parent="." instance=ExtResource("3_7xb1a")]
-position = Vector2(778, -1640)
+position = Vector2(-64527, -50111)
+
+[node name="Road4" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-66552, -47987)
+points = PackedVector2Array(2045, -2110, 2045, -4732)
+
+[node name="Road2" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-62789, -49111)
+points = PackedVector2Array(4333, -1018, -3161, -1007)
+
+[node name="Road3" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-62713, -51711)
+points = PackedVector2Array(4333, -1018, -3183, -1021)
+
+[node name="Road" parent="." instance=ExtResource("4_x1rdj")]
+position = Vector2(-62789, -49111)
+points = PackedVector2Array(4333, -1018, 4333, -5853.79, -3032.74, -5853.79, -3032.74, 183.849, 4333, 183.849, 4333, -1018)

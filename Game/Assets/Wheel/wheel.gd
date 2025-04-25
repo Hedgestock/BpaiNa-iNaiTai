@@ -4,6 +4,7 @@ class_name Wheel extends Node2D
 @export var stress_limit: int = 400
 @export var new_physics: Physics
 @export var rim_physics: Physics
+@export var tire_screech: AudioStreamPlayer2D
 
 var physics: Physics
 var tire_mark: Line2D
@@ -53,10 +54,12 @@ func drag(velocity: Vector2) -> Vector2:
 func start_drifting() -> void:
 	if is_drifting: return
 	add_tire_mark()
+	tire_screech.play()
 	is_drifting = true
 
 func stop_drifting() -> void:
 	if !is_drifting: return
+	tire_screech.stop()
 	is_drifting = false
 
 func start_burning_out() -> void:
@@ -90,3 +93,4 @@ func apply_physics(physics: Physics) -> void:
 	self.physics = physics
 	durability.max_value = physics.durability
 	get_node("Tire").texture = physics.texture
+	tire_screech.stream = physics.screeching
