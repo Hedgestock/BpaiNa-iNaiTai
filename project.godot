@@ -13,6 +13,8 @@ config_version=5
 config/name="BpaiNǎiNaiTai"
 run/main_scene="uid://b8ybvw2d3h3qh"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0.0980392, 0.27451, 0.407843, 1)
+boot_splash/image="uid://ds2atggfh18jt"
 config/icon="res://icon.svg"
 
 [autoload]

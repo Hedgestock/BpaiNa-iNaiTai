@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16ad8bx6bdjy"]
+
+[ext_resource type="Texture2D" uid="uid://clauwrcbqowl4" path="res://Game/Assets/Places/711/711.svg" id="1_gd5t7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd5t7"]
+size = Vector2(418, 288)
+
+[node name="711" type="StaticBody2D"]
+z_index = 10
+
+[node name="711" type="Sprite2D" parent="."]
+position = Vector2(218, 40)
+texture = ExtResource("1_gd5t7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(209, -143)
+shape = SubResource("RectangleShape2D_gd5t7")

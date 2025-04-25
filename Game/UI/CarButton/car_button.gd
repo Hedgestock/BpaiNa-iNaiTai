@@ -14,4 +14,3 @@ func _ready() -> void:
 func start_game() -> void:
 	GameManager.selected_car = car
 	get_tree().change_scene_to_file("res://Game/Scenes/Game/Game.tscn")
-	
