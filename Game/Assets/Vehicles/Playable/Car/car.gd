@@ -3,14 +3,16 @@ class_name Car extends RigidBody2D
 @export var camera: Camera2D
 @export var mini_map: SubViewportContainer
 @export var turning_radius: float = 25
-@export var fuel_consuption: float = 0.1
+@export var fuel_consuption: float = 0.05
 @export var fuel_gauge: TextureProgressBar
 @export var direction_wheels: Array[Wheel]
 @export var power_wheels: Array[Wheel]
 @export var speed_label: Label
+@export var destination_label: Label
 @export var power_curve: Curve
 
-var refueling_rate: int = 0
+var start_time: float = 0
+var refueling_rate: float = 0
 var wheels: Array[Wheel] = []
 
 func _ready():
@@ -53,7 +55,7 @@ func brake() -> void:
 func drive(reverse: bool = false) -> void:
 	if fuel_gauge.value <= 0: return
 	var proxy_speed = speed if !reverse else 0
-	print((power_curve.sample(proxy_speed) / power_curve.max_value) * fuel_consuption)
+	#print((power_curve.sample(proxy_speed) / power_curve.max_value) * fuel_consuption)
 	fuel_gauge.value -= (power_curve.sample(proxy_speed) / power_curve.max_value) * fuel_consuption
 	power_curve.sample(proxy_speed)
 	
@@ -79,8 +81,12 @@ func adjust_hud() -> void:
 	camera.position = Vector2(0, - ((1 - zoom) * 2000 + 500))
 	mini_map.scale = Vector2(zoom, zoom)
 
-func start_refueling(rate: int) -> void:
+func start_refueling(rate: float) -> void:
 	refueling_rate = rate
 
 func stop_refueling() -> void:
 	refueling_rate = 0
+
+func congratulate() -> void:
+	camera.get_node("CanvasLayer/CenterContainer").show()
+	camera.get_node("CanvasLayer/CenterContainer/VBoxContainer/Label").text = str("Congratulation !\nYou reached\n%s\nin %0.1f seconds !!!" % [GameManager.selected_destination.city_name, Time.get_unix_time_from_system() - start_time])

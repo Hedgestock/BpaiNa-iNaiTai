@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://boc86l5mcwi2r"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://boc86l5mcwi2r"]
+
+[ext_resource type="FontFile" uid="uid://dqvpe73v2i04k" path="res://Game/Themes/IBMPlexSansThai-Regular.ttf" id="1_lt1kt"]
 
 [resource]
+default_font = ExtResource("1_lt1kt")
 default_font_size = 64

@@ -2,70 +2,49 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="160.69028mm"
+   height="163.64554mm"
+   viewBox="0 0 160.69028 163.64554"
    version="1.1"
    id="svg25963"
-   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
-   sodipodi:docname="Road.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview25965"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="0.3581229"
-     inkscape:cx="206.63298"
-     inkscape:cy="330.892"
-     inkscape:window-width="1920"
-     inkscape:window-height="991"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs25960" />
   <g
-     inkscape:label="Calque 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <rect
-       style="fill:#a0a0a0;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
-       id="rect26211"
-       width="163.64552"
-       height="160.69029"
-       x="26.227612"
-       y="41.373135" />
-    <rect
-       style="fill:#ffe131;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
-       id="rect29698"
-       width="14.406716"
-       height="31.399254"
-       x="100.84702"
-       y="104.54105" />
-    <rect
-       style="fill:#ffe131;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
-       id="rect34008"
-       width="14.406716"
-       height="31.399254"
-       x="100.84702"
-       y="161.05972" />
-    <rect
-       style="fill:#ffe131;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
-       id="rect34010"
-       width="14.406716"
-       height="31.399254"
-       x="100.84702"
-       y="51.347023" />
+     id="layer1"
+     transform="translate(-25.119414,-39.895518)">
+    <g
+       id="g200"
+       transform="rotate(90,105.46456,121.71828)">
+      <rect
+         style="fill:#a0a0a0;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect26211"
+         width="163.64552"
+         height="160.69029"
+         x="23.641798"
+         y="41.373135" />
+      <rect
+         style="fill:#ffe131;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect29698"
+         width="9.235075"
+         height="31.399254"
+         x="100.84702"
+         y="104.54105" />
+      <rect
+         style="fill:#ffe131;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect34008"
+         width="9.235075"
+         height="31.399254"
+         x="100.84702"
+         y="161.05972" />
+      <rect
+         style="fill:#ffe131;fill-opacity:1;stroke:#717171;stroke-width:0;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect34010"
+         width="9.235075"
+         height="31.399254"
+         x="100.84702"
+         y="51.347023" />
+    </g>
   </g>
 </svg>

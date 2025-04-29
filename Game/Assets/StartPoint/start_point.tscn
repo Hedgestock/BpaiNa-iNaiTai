@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://fctjy55283fr"]
+
+[ext_resource type="Script" uid="uid://g1l8phjfdl1v" path="res://Game/Assets/StartPoint/start_point.gd" id="1_kxswf"]
+[ext_resource type="Texture2D" uid="uid://cckq004kg2can" path="res://Game/Assets/StartPoint/PANNEAU.svg" id="2_7ohp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvk2j"]
+size = Vector2(2000, 1000)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tca64"]
+radius = 30.0
+
+[node name="StartPoint" type="Area2D" node_paths=PackedStringArray("destination_label")]
+script = ExtResource("1_kxswf")
+destination_label = NodePath("Panneau/Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_yvk2j")
+
+[node name="Panneau" type="Sprite2D" parent="."]
+position = Vector2(-992, -26)
+rotation = -1.5708
+texture = ExtResource("2_7ohp8")
+
+[node name="Label" type="Label" parent="Panneau"]
+offset_left = -352.0
+offset_top = -293.0
+offset_right = 6.00003
+offset_bottom = -114.0
+text = "Destination
+Destination"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Panneau"]
+position = Vector2(-50, 331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panneau/StaticBody2D"]
+shape = SubResource("CircleShape2D_tca64")
+
+[connection signal="body_entered" from="." to="." method="on_selection"]

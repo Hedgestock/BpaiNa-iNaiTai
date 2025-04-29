@@ -1,38 +1,105 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0uhpdvcr67xb"]
+[gd_scene load_steps=13 format=3 uid="uid://b0uhpdvcr67xb"]
 
 [ext_resource type="Script" uid="uid://r6mrcqwb4mxd" path="res://Game/Assets/Places/GasStation/gas_station.gd" id="1_3scxm"]
+[ext_resource type="Texture2D" uid="uid://htu4dshvqms5" path="res://Game/Assets/Places/GasStation/PTT.svg" id="2_1ug44"]
 [ext_resource type="PackedScene" uid="uid://c16ad8bx6bdjy" path="res://Game/Assets/Places/711/711.tscn" id="2_2hc13"]
+[ext_resource type="Texture2D" uid="uid://tb1phpcmy0hq" path="res://Game/Assets/Places/GasStation/GARAGE sol.svg" id="3_ty6bk"]
+[ext_resource type="Texture2D" uid="uid://bw5mb0fxgidkr" path="res://Game/Assets/Places/GasStation/GARAGE toit.svg" id="4_ty6bk"]
+[ext_resource type="Texture2D" uid="uid://c62dmjeu7g3r4" path="res://Game/Assets/Places/GasStation/PRKING.svg" id="5_x6864"]
+[ext_resource type="PackedScene" uid="uid://djwkyb8wxl3ej" path="res://Game/Assets/Terrains/Road/road.tscn" id="6_v88jf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0sqx"]
 size = Vector2(1000, 600)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82cii"]
+size = Vector2(688, 237)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jltnx"]
-size = Vector2(250, 250)
+size = Vector2(435, 250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fycmk"]
+size = Vector2(618, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6864"]
+size = Vector2(30.5, 546.5)
 
 [node name="PTT" type="Node2D" node_paths=PackedStringArray("tire_timer")]
 script = ExtResource("1_3scxm")
 tire_timer = NodePath("Timer")
 
-[node name="RefuelZone" type="Area2D" parent="."]
+[node name="Ptt" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(59, 158)
+texture = ExtResource("2_1ug44")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RefuelZone"]
+[node name="RefuelZone" type="Area2D" parent="Ptt"]
+position = Vector2(-1, 140)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ptt/RefuelZone"]
+position = Vector2(-6, 18)
 shape = SubResource("RectangleShape2D_r0sqx")
 
-[node name="TireChangeZone" type="Area2D" parent="."]
-position = Vector2(0, 1000)
+[node name="StaticBody2D" type="StaticBody2D" parent="Ptt"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TireChangeZone"]
-position = Vector2(-1295, -1001)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ptt/StaticBody2D"]
+position = Vector2(-1, 102.5)
+shape = SubResource("RectangleShape2D_82cii")
+
+[node name="Prking" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(11.0001, 769)
+scale = Vector2(5, 5)
+texture = ExtResource("5_x6864")
+
+[node name="Road" parent="Prking" instance=ExtResource("6_v88jf")]
+position = Vector2(-398.536, -221.392)
+scale = Vector2(0.19, 0.19)
+points = PackedVector2Array(661.768, 1053.64, -69.8047, 1053.64, -895.074, 1931.53)
+
+[node name="Road2" parent="Prking" instance=ExtResource("6_v88jf")]
+position = Vector2(459.8, -221)
+scale = Vector2(-0.19, 0.19)
+points = PackedVector2Array(661.768, 1053.64, -69.8047, 1053.64, -895.074, 1931.53)
+
+[node name="GarageSol" type="Sprite2D" parent="."]
+position = Vector2(-260, -336)
+texture = ExtResource("3_ty6bk")
+
+[node name="TireChangeZone" type="Area2D" parent="GarageSol"]
+position = Vector2(1104, 1336)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GarageSol/TireChangeZone"]
+position = Vector2(-1111.5, -1628)
 shape = SubResource("RectangleShape2D_jltnx")
+
+[node name="GarageToit" type="Sprite2D" parent="GarageSol"]
+z_index = 10
+position = Vector2(-19.5001, -373)
+scale = Vector2(1.07935, 1)
+texture = ExtResource("4_ty6bk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GarageSol"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GarageSol/StaticBody2D"]
+position = Vector2(-9, -479.5)
+shape = SubResource("RectangleShape2D_fycmk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GarageSol/StaticBody2D"]
+position = Vector2(-304.5, -221.5)
+shape = SubResource("RectangleShape2D_x6864")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GarageSol/StaticBody2D"]
+position = Vector2(284.75, -221.25)
+shape = SubResource("RectangleShape2D_x6864")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="711" parent="." instance=ExtResource("2_2hc13")]
-position = Vector2(-214, -311)
+position = Vector2(334, -289)
 
-[connection signal="body_entered" from="RefuelZone" to="." method="start_refueling"]
-[connection signal="body_exited" from="RefuelZone" to="." method="stop_refueling"]
-[connection signal="body_entered" from="TireChangeZone" to="." method="check_for_tire"]
-[connection signal="body_exited" from="TireChangeZone" to="." method="stop_checking_for_tire"]
+[connection signal="body_entered" from="Ptt/RefuelZone" to="." method="start_refueling"]
+[connection signal="body_exited" from="Ptt/RefuelZone" to="." method="stop_refueling"]
+[connection signal="body_entered" from="GarageSol/TireChangeZone" to="." method="check_for_tire"]
+[connection signal="body_exited" from="GarageSol/TireChangeZone" to="." method="stop_checking_for_tire"]

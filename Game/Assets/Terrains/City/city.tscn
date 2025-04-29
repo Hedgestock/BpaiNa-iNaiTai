@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://16bauj7l3cvv"]
+[gd_scene load_steps=5 format=3 uid="uid://16bauj7l3cvv"]
 
 [ext_resource type="Script" uid="uid://blvq4dn1qx6n3" path="res://Game/Assets/Terrains/City/city.gd" id="1_etcis"]
 [ext_resource type="Texture2D" uid="uid://oqgmw75phc6a" path="res://Game/Assets/Terrains/City/City.png" id="1_lw7l6"]
+[ext_resource type="AudioStream" uid="uid://b2kb7rq47cded" path="res://Game/Audio/Race Results.wav" id="2_a83hd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lw7l6"]
 radius = 400.0
@@ -9,6 +10,7 @@ radius = 400.0
 [node name="City" type="Area2D" node_paths=PackedStringArray("city_label")]
 script = ExtResource("1_etcis")
 city_label = NodePath("Label")
+results = ExtResource("2_a83hd")
 
 [node name="City" type="Sprite2D" parent="."]
 texture = ExtResource("1_lw7l6")
@@ -31,3 +33,5 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lw7l6")
+
+[connection signal="body_entered" from="." to="." method="on_arrival"]
